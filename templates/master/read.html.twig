@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% set title = "Présentation du maître de jeu " %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <header class="page-header">
+        <h2 class="page-title">{{ title }}</h2>
+    </header>
+
+    <main>
+        {{ dump(master) }}
+    </main>
+</div>
+{% endblock %}

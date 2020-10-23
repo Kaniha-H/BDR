@@ -1,0 +1,21 @@
+{{ form_start(form) }}
+
+{# Pseudo #}
+<div class="form-group">
+    {{ form_label(form.pseudo) }}
+    {{ form_widget(form.pseudo) }}
+    {{ form_errors(form.pseudo) }}
+    {{ form_help(form.pseudo) }}
+</div>
+
+{# Description #}
+<div class="form-group">
+    {{ form_label(form.description) }}
+    {{ form_widget(form.description) }}
+    {{ form_errors(form.description) }}
+    {{ form_help(form.description) }}
+</div>
+
+<button type="submit">{{ btn_label | default("Ajouter le joueur") }}</button>
+
+{{ form_end(form, {'render_rest': false}) }}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Bienvenue sur le site des Batisseurs de rêves{% endblock %}</title>
+        {% block stylesheets %}
+        {{ encore_entry_link_tags('app')}}
+        {% endblock %}
+    </head>
+    <body>
+    <header class="main-header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+            <a class="navbar-brand" href="{{ path('homepage') }}">Les batisseurs de rêves</a>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bdr-navbar" aria-controls="bdr-navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="bdr-navbar">
+                <ul class="navbar-nav mr-auto">
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ path('homepage') }}">Accueil</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('master:index') }}">Maîtres de jeux</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('game:index') }}">Jeux</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('player:index') }}">Joueurs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('universe:index') }}">Univers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('shop') }}">Boutique</a>
+                    </li>
+              
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('cart_index') }}">Panier</a>
+                    </li>
+                    
+                </ul>
+
+
+                {# Menu utilisateur #}
+                <ul class="navbar-nav ml-auto">
+                {# is_granted('ROLE_ADMIN') #}
+                {# is_granted('IS_AUTHENTICATED_FULLY') #}
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    {# Utilisateur identifié #}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('product:index') }}">Produits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{{ app.user.screenname }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_logout') }}">Deconnexion</a>
+                    </li>
+
+                {% else %}
+                    {# Utilisateur Anonyme #}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+                    </li>
+
+                {% endif %}
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+        {% block body %}{% endblock %}
+        {% block javascripts %}
+        {{encore_entry_script_tags('app')}}
+        {% endblock %}
+    </body>
+</html>

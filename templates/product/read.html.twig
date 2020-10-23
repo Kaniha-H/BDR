@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon produit{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <header class="page-header">
+            <h2 class="page-title">Mon produit {{ product.name }}</h2>
+        </header>
+
+        <main>
+            <div class="container">
+                <p>Description : {{ product.description }}</p>
+                <p>Prix : {{ product.price }}</p> 
+                <p>Nombre de pages : {{ page_number }}</p>
+                <p>Date de parution : {{ release_in }}</p>
+                <p>Image : <img class="img-fluid rounded" src="{{ asset('uploads/' ~ product.illustration) }}" alt="Image de {{ product.name }}"></p>
+            </div>
+        </main>
+    </div>
+{% endblock %}

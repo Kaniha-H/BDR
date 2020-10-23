@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% set title = "Liste des jeux !!!" %}
+
+{% block title %}{{ title }}{% endblock %}
+{#% block title title %#}
+
+{% block body %}
+<div class="container">
+    
+    <header class="page-header">
+        <h2 class="page-title">{{ title }}</h2>
+    </header>
+
+    <main>
+        <ul>
+        {% for game in games %}
+            <li>{{ game.name }} (<a href="{{ path('game:read', {id: game.id}) }}">voir</a>)</li>
+        {% else %}
+            <li>Aucun jeux dans la liste <a href="{{ path('game:create') }}">Ajouter</a></li>
+        {% endfor %}
+        </ul>
+    </main>
+
+</div>
+{% endblock %}

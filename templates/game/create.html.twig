@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% set title = "Ajouter un jeu" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <header class="page-header">
+        <h2 class="page-title">{{ title }}</h2>
+    </header>
+
+    <main>
+        {% include "game/_form.html.twig" %}
+    </main>
+</div>
+{% endblock %}

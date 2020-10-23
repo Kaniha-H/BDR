@@ -1,0 +1,21 @@
+{{ form_start(form) }}
+
+{# Nom de l'univers #}
+<div class="form-group">
+    {{ form_label(form.name) }}
+    {{ form_widget(form.name) }}
+    {{ form_errors(form.name) }}
+    {{ form_help(form.name) }}
+</div>
+
+{# Description #}
+<div class="form-group">
+    {{ form_label(form.description) }}
+    {{ form_widget(form.description) }}
+    {{ form_errors(form.description) }}
+    {{ form_help(form.description) }}
+</div>
+
+<button type="submit">{{ btn_label | default("Ajouter l'Univers") }}</button>
+
+{{ form_end(form, {'render_rest': false}) }}

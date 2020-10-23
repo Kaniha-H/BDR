@@ -1,0 +1,21 @@
+{{ form_start(form) }}
+
+{# Nom du maître de jeu #}
+<div class="form-group">
+    {{ form_label(form.pseudo) }}
+    {{ form_widget(form.pseudo) }}
+    {{ form_errors(form.pseudo) }}
+    {{ form_help(form.pseudo) }}
+</div>
+
+{# Présentaion du maître de jeu #}
+<div class="form-group">
+    {{ form_label(form.description) }}
+    {{ form_widget(form.description) }}
+    {{ form_errors(form.description) }}
+    {{ form_help(form.description) }}
+</div>
+
+<button type="submit">{{ btn_label | default("Ajouter le maître de jeu") }}</button>
+
+{{ form_end(form, {'render_rest': false}) }}

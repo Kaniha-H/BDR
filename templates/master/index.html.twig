@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% set title = "Liste des maîtres de jeux !!!" %}
+
+{% block title %}{{ title }}{% endblock %}
+{#% block title title %#}
+
+{% block body %}
+<div class="container">
+    
+    <header class="page-header">
+        <h2 class="page-title">{{ title }}</h2>
+    </header>
+
+    <main>
+        <ul>
+        {% for master in masters %}
+            <li>{{ master.pseudo }} (<a href="{{ path('master:read', {id: master.id}) }}">voir</a>)</li>
+        {% else %}
+            <li>Aucun maître de jeu n'est enregistré... <a href="{{ path('master:create') }}">Ajouter</a></li>
+        {% endfor %}
+        </ul>
+    </main>
+
+</div>
+{% endblock %}

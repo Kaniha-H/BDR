@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editer un produit{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <header class="page-header">
+            <h2 class="page-title">Editer le produit</h2>
+        </header>
+    </div>
+
+    <main>
+        {% include "product/_form.html.twig" with {btn_label: "Modifier le produit"} %}
+    </main>
+{% endblock %}

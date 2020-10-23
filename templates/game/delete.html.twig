@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% set title = "Suppression d'un jeu" %}
+
+{% block title %}{{ title }}{% endblock %}
+{#% block title title %#}
+
+{% block body %}
+<div class="container">
+    
+    <header class="page-header">
+        <h2 class="page-title">{{ title }}</h2>
+    </header>
+
+    <main>
+        <form method="POST" action="{{ path('game:delete', {id: game.id}) }}">
+            <input type="hidden" name="_method" value="DELETE">
+
+            <p>Confirmer la Suppression du jeu : {{ game.name }} ?</p>
+
+            <button type="submit" class="btn btn-danger">OUI</button>
+            <button type="button" class="btn btn-secondary" onclick="window.location.href='{{ path('game:index') }}';">NON</button>
+        </form>
+    </main>
+
+</div>
+{% endblock %}

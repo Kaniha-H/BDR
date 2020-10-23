@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% set title = "Suppression d'un univers" %}
+
+{% block title %}{{ title }}{% endblock %}
+{#% block title title %#}
+
+{% block body %}
+<div class="container">
+    
+    <header class="page-header">
+        <h2 class="page-title">{{ title }}</h2>
+    </header>
+
+    <main>
+        <form method="POST" action="{{ path('universe:delete', {id: universe.id}) }}">
+            <input type="hidden" name="_method" value="DELETE">
+
+            <p>Confirmer la Suppression de l'univers : {{ universe.name }} ?</p>
+
+            <button type="submit" class="btn btn-danger">OUI</button>
+            <button type="button" class="btn btn-secondary" onclick="window.location.href='{{ path('universe:index') }}';">NON</button>
+        </form>
+    </main>
+
+</div>
+{% endblock %}

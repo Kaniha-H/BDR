@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% set title = "Liste des univers !!!" %}
+
+{% block title %}{{ title }}{% endblock %}
+{#% block title title %#}
+
+{% block body %}
+<div class="container">
+    
+    <header class="page-header">
+        <h2 class="page-title">{{ title }}</h2>
+    </header>
+
+    <main>
+        <ul>
+        {% for universe in universes %}
+            <li>{{ universe.name }} (<a href="{{ path('universe:read', {id: universe.id}) }}">voir</a>)</li>
+        {% else %}
+            <li>Aucun univers... <a href="{{ path('universe:create') }}">Ajouter</a></li>
+        {% endfor %}
+        </ul>
+    </main>
+
+</div>
+{% endblock %}
+

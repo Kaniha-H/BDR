@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% set title = "Modifier un univers" %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <header class="page-header">
+        <h2 class="page-title">{{ title }}</h2>
+    </header>
+
+    <main>
+        {% include "universe/_form.html.twig" with {btn_label: "Modifier l'univers"} %}
+    </main>
+</div>
+{% endblock %}

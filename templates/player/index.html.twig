@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% set title = "Liste des joueurs !!!" %}
+
+{% block title %}{{ title }}{% endblock %}
+{#% block title title %#}
+
+{% block body %}
+<div class="container">
+    
+    <header class="page-header">
+        <h2 class="page-title">{{ title }}</h2>
+    </header>
+
+    <main>
+        <ul>
+        {% for player in players %}
+            <li>{{ player.pseudo }} (<a href="{{ path('player:read', {id: player.id}) }}">voir</a>)</li>
+        {% else %}
+            <li>Aucune joueur trouvé... <a href="{{ path('player:create') }}">Ajouter</a></li>
+        {% endfor %}
+        </ul>
+    </main>
+
+</div>
+{% endblock %}

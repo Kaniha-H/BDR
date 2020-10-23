@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Boutique{% endblock %}
+
+{% block body %}
+    <header class="main-header">
+        <h1 class="text-center mt-5">Bienvenu sur boutique</h1>
+    </header>
+    <main class="container">
+        <div class="row">
+            {% for product in products %}
+                <div class="col-md-4 col-sm-12 mt-4">
+                    <div class="border border-dark rounded p-2 clearfix">
+                        <h2>
+                            {{ product.name }}
+                        </h2>
+                        <img class="img-fluid rounded" src="{{ asset('uploads/' ~ product.illustration) }}" alt="Image de {{ product.name }}">
+                        <hr>
+                        {{ product.price }}
+                            €
+                        <a href="{{ path('cart_add', {'id': product.id}) }}" class="btn btn-success float-right">
+                            <i class="fas fa-shopping-cart mr-1"></i>
+                            Ajouter
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </main>
+{% endblock %}

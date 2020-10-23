@@ -1,0 +1,36 @@
+{{ form_start(form) }}
+
+{# Nom du jeu #}
+<div class="form-group">
+    {{ form_label(form.name) }}
+    {{ form_widget(form.name) }}
+    {{ form_errors(form.name) }}
+    {{ form_help(form.name) }}
+</div>
+
+{# Description du jeu #}
+<div class="form-group">
+    {{ form_label(form.description) }}
+    {{ form_widget(form.description) }}
+    {{ form_errors(form.description) }}
+    {{ form_help(form.description) }}
+</div>
+
+{# Univers du jeu #}
+<div class="form-group">
+    {{ form_label(form.universe) }}
+    {{ form_widget(form.universe) }}
+    {{ form_errors(form.universe) }}
+    {{ form_help(form.universe) }}
+</div>
+{# Maître(s) de jeu(x) #}
+<div class="form-group">
+    {# {{ form_label(form.master) }} #}
+    {{ form_widget(form.master) }}
+    {{ form_errors(form.master) }}
+    {{ form_help(form.master) }}
+</div>
+
+<button type="submit">{{ btn_label | default("Ajouter le jeu") }}</button>
+
+{{ form_end(form, {'render_rest': false}) }}
