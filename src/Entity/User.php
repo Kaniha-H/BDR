@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Entity\User;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -58,12 +60,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=16)
      */
-    private $phone;
-
-    /**
-     * @ORM\Column(type="string", length=10, nullable=true)
-     */
-    private $birthday;
+    private $phone; 
 
     /**
      * @ORM\Column(type="datetime")
@@ -80,11 +77,17 @@ class User implements UserInterface
      */
     private $agreeTermsAt;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Invoice::class, mappedBy="users", cascade={"persist"})
+     */
+    private $invoices;
+
 
     public function __construct()
     {
         $this->registerAt = new \DateTime;     
-        $this->agreeTermsAt = new \DateTime;     
+        $this->agreeTermsAt = new \DateTime;
+        $this->invoices = new ArrayCollection();     
         
     }
 
@@ -228,18 +231,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getBirthday(): ?string
-    {
-        return $this->birthday;
-    }
-
-    public function setBirthday(string $birthday): self
-    {
-        $this->birthday = $birthday;
-
-        return $this;
-    }
-
     public function getRegisterAt(): ?\DateTimeInterface
     {
         return $this->registerAt;
@@ -272,6 +263,37 @@ class User implements UserInterface
     public function setAgreeTermsAt(\DateTimeInterface $agreeTermsAt): self
     {
         $this->agreeTermsAt = $agreeTermsAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Invoice[]
+     */
+    public function getInvoices(): Collection
+    {
+        return $this->invoices;
+    }
+
+    public function addInvoice(Invoice $invoice): self
+    {
+        if (!$this->invoices->contains($invoice)) {
+            $this->invoices[] = $invoice;
+            $invoice->setUsers($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInvoice(Invoice $invoice): self
+    {
+        if ($this->invoices->contains($invoice)) {
+            $this->invoices->removeElement($invoice);
+            // set the owning side to null (unless already changed)
+            if ($invoice->getUsers() === $this) {
+                $invoice->setUsers(null);
+            }
+        }
 
         return $this;
     }

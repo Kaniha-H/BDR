@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Bienvenue sur le site des Batisseurs de rêves{% endblock %}</title>
+        <title>{% block title %}Bienvenue sur le site des Bâtisseurs de rêves{% endblock %}</title>
         {% block stylesheets %}
         {{ encore_entry_link_tags('app')}}
         {% endblock %}
@@ -44,6 +44,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('cart_index') }}">Panier</a>
                     </li>
+              
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('main_fullcalendar') }}">Evenements</a>
+                    </li>
                     
                 </ul>
 
@@ -58,7 +62,7 @@
                         <a class="nav-link" href="{{ path('product:index') }}">Produits</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">{{ app.user.screenname }}</a>
+                        <a class="nav-link" href="{{ path('invoice:index') }}">{{ app.user.screenname }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('app_logout') }}">Deconnexion</a>

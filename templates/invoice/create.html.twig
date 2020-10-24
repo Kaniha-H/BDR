@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% set title = "Ajouter un facture" %}
+
+{% block title title %}
+
+{% block body %}
+<div class="container">
+
+    <header class="page-header">
+        <h2 class="page-title">{{ title }}</h2>
+    </header>
+
+    <div class="row">
+        <div class="col-12">
+
+            {% include "invoice/_form.html.twig" %}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

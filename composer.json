@@ -10,6 +10,7 @@
         "doctrine/doctrine-bundle": "^2.1",
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.7",
+        "fullcalendar/fullcalendar": "^3.10",
         "laminas/laminas-code": "^3.4",
         "laminas/laminas-eventmanager": "^3.3",
         "ocramius/proxy-manager": "^2.2",

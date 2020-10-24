@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% set title = "Facture n° " ~ invoice.number ~ " - Facture 3000" %}
+
+{% block title title %}
+
+{% block body %}
+<div class="container">
+
+    <header class="page-header">
+        <h2 class="page-title">{{ title }}</h2>
+    </header>
+
+    <div class="row">
+        <div class="col-12">
+
+            <div>
+                <strong>Numero</strong> {{ invoice.number }}
+            </div>
+            <div>
+                <strong>Date</strong> {{ invoice.createAt }}
+            </div>
+            <div>
+                <strong>Client</strong> <a href="{{ path('user:read', {uuid: invoice.user.id }) }}">{{ invoice.user.firstname }} {{ invoice.user.lastname }}</a>
+            </div>
+
+            <hr>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Produit</th>
+                        <th>qte</th>
+                        <th>Montant</th>
+                        <td>action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for invoice in invoice.products %}
+                    <tr>
+                        <td>xxxx</td>
+                        <td>xxxx</td>
+                        <td>xxxx</td>
+                        <td>xxxxx</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

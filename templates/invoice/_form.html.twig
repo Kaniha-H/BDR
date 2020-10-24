@@ -1,0 +1,73 @@
+{{ form_start(form) }}
+
+{# Nom du jeu #}
+<div class="form-group">
+    {{ form_label(form.number) }}
+    {{ form_widget(form.number) }}
+    {{ form_errors(form.number) }}
+    {{ form_help(form.number) }}
+</div>
+
+{# Univers du jeu #}
+<div class="form-group">
+    {{ form_label(form.users) }}
+    {{ form_widget(form.users) }}
+    {{ form_errors(form.users) }}
+    {{ form_help(form.users) }}
+</div>
+{# Maître(s) de jeu(x) #}
+{# {{ form_start(form) }} #}
+
+{% embed "components/collection.html.twig" with {
+    name: "collection-products",
+    form: form,
+    items: form.products,
+    minimum_items: 1,
+    init_items: 1,
+    tag: '<div class="form-group"></div>',
+    counter: form.products|length,
+} only %}
+    
+    {% block collection_items %}{% for item in items %}
+    <div class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"># <span data-collection-serial></span></span>
+            </div>
+
+            {{ form_widget(item) }}
+
+            <div class="input-group-append">
+                <button type="button" class="btn btn-secondary"  
+                data-collection-action="remove" 
+                data-collection-target="#{{ name }}"
+                data-collection-serial0="{{ loop.index }}">&times;</button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}{% endblock %}
+
+    {% block collection_template %}
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text"># <span data-collection-serial></span></span>
+        </div>
+
+        {{ form_widget(form.products.vars.prototype) }}
+
+        <div class="input-group-append">
+            <button type="button" class="btn btn-secondary"  
+            data-collection-action="remove" 
+            data-collection-target="#{{ name }}"
+            data-collection-serial0="__name__">&times;</button>
+        </div>
+    </div>
+    {% endblock %}
+
+{% endembed %}
+
+     
+
+<button type="submit">{{ btn_label | default("Ajouter le client") }}</button>
+
+{{ form_end(form, {'render_rest': false}) }}

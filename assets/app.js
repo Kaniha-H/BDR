@@ -14,6 +14,32 @@ import $ from 'jquery';
 import 'popper.js';
 import 'bootstrap';
 
+require("./js/collection.js");
 
+console.log('Hello Webpack Encore! Edit me in assets/app.js');
 
-// console.log('Hello Webpack Encore! Edit me in assets/app.js');
+jQuery(function(){
+    $('#collection-products').collection();
+});
+
+import { Calendar } from '@fullcalendar/core';
+import interactionPlugin from '@fullcalendar/interaction';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import listPlugin from '@fullcalendar/list';
+
+// let calendar = new Calendar(calendarEl, {
+//     plugins: [ dayGridPlugin, timeGridPlugin, listPlugin ],
+//     header : {
+//         left: 'prev,next today',
+//         left: 'prev,next today',
+//         center: 'title',
+//         right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+//     },
+//     navLinks: true,
+//     editable: false,
+//     eventLimit: false,
+//     events: [
+
+//     ]
+// });

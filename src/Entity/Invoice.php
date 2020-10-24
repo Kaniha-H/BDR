@@ -32,7 +32,7 @@ class Invoice
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $isArchived;
+    private $isArchived = false;
 
     /**
      * @ORM\OneToMany(targetEntity=Product::class, mappedBy="Invoices", orphanRemoval=true)
@@ -43,10 +43,11 @@ class Invoice
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="invoices")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $Users;
+    private $users;
 
     public function __construct()
     {
+        $this->createAt = new \DateTime;
         $this->products = new ArrayCollection();
     }
 
@@ -55,12 +56,12 @@ class Invoice
         return $this->id;
     }
 
-    public function getNumber(): ?int
+    public function getNumber(): ?string
     {
         return $this->number;
     }
 
-    public function setNumber(?int $number): self
+    public function setNumber(?string $number): self
     {
         $this->number = $number;
 
@@ -124,12 +125,12 @@ class Invoice
 
     public function getUsers(): ?User
     {
-        return $this->Users;
+        return $this->users;
     }
 
-    public function setUsers(?User $Users): self
+    public function setUsers(?User $users): self
     {
-        $this->Users = $Users;
+        $this->Users = $users;
 
         return $this;
     }
