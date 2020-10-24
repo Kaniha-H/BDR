@@ -39,7 +39,7 @@ class InvoiceType extends AbstractType
                 'by_reference' => false,
             ])
 
-            ->add('users', EntityType::class,[
+            ->add('user', EntityType::class,[
                 'label'=> "Client",
                 'label_attr' => ['class' => 'col-sm-3 col-form-label'
                ],

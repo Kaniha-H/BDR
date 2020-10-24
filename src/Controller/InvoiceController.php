@@ -46,14 +46,16 @@ class InvoiceController extends AbstractController
             $em->persist( $invoice );
             $em->flush();
 
-            return $this->redirectToRoute('invoice:read');
+            return $this->redirectToRoute('invoice:read', [
+                'id' => $invoice->getId()
+            ]);
         }
 
         $form = $form->createView();
 
         return $this->render('invoice/create.html.twig', [
             'form' => $form,
-            'id' => $invoice->getId()
+            
             // 'errors' => $errors,
         ]);
     }
@@ -102,8 +104,19 @@ class InvoiceController extends AbstractController
      */
     public function delete(Invoice $invoice, Request $request)
     {
-        return $this->render('game/delete.html.twig', [
+        return $this->render('invoice/delete.html.twig', [
             'invoice' => $invoice
         ]);
     }
+
+    // /**
+    //  * @Route("/{id}/name", name=":name")
+    //  */
+    // public function productName(Invoice $invoice)
+    // {
+    //     return $this->render('invoice/name.html.twig', [
+    //         'invoice' => $invoice->getProducts()
+
+    //     ]);
+    // }
 }

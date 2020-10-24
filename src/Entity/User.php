@@ -78,7 +78,7 @@ class User implements UserInterface
     private $agreeTermsAt;
 
     /**
-     * @ORM\OneToMany(targetEntity=Invoice::class, mappedBy="users", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=Invoice::class, mappedBy="users")
      */
     private $invoices;
 
@@ -279,7 +279,7 @@ class User implements UserInterface
     {
         if (!$this->invoices->contains($invoice)) {
             $this->invoices[] = $invoice;
-            $invoice->setUsers($this);
+            $invoice->setUser($this);
         }
 
         return $this;
@@ -290,8 +290,8 @@ class User implements UserInterface
         if ($this->invoices->contains($invoice)) {
             $this->invoices->removeElement($invoice);
             // set the owning side to null (unless already changed)
-            if ($invoice->getUsers() === $this) {
-                $invoice->setUsers(null);
+            if ($invoice->getUser() === $this) {
+                $invoice->setUser(null);
             }
         }
 

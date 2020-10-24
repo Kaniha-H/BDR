@@ -17,14 +17,14 @@
                 <strong>Numero</strong> {{ invoice.number }}
             </div>
             <div>
-                <strong>Date</strong> {{ invoice.createAt }}
+                {# <strong>Date</strong> {{ invoice.createAt }} #}
             </div>
             <div>
-                <strong>Client</strong> <a href="{{ path('user:read', {uuid: invoice.user.id }) }}">{{ invoice.user.firstname }} {{ invoice.user.lastname }}</a>
+                {# <strong>Client</strong> <a href="{{ path('user:read', {id: invoice.user.id }) }}">{{ invoice.user.firstname }} {{ invoice.user.lastname }}</a> #}
             </div>
 
             <hr>
-
+    
             <table class="table">
                 <thead>
                     <tr>
@@ -37,9 +37,9 @@
                 <tbody>
                 {% for invoice in invoice.products %}
                     <tr>
-                        <td>xxxx</td>
-                        <td>xxxx</td>
-                        <td>xxxx</td>
+                        <td>{{ invoice.name }}</td>
+                        <td>item.quantity</td>
+                        <td>{{ invoice.price }}</td>
                         <td>xxxxx</td>
                     </tr>
                 {% endfor %}

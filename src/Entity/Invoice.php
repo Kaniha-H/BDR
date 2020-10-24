@@ -43,7 +43,7 @@ class Invoice
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="invoices")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $users;
+    private $user;
 
     public function __construct()
     {
@@ -123,14 +123,14 @@ class Invoice
         return $this;
     }
 
-    public function getUsers(): ?User
+    public function getUser(): ?User
     {
-        return $this->users;
+        return $this->user;
     }
 
-    public function setUsers(?User $users): self
+    public function setUser(?User $user): self
     {
-        $this->Users = $users;
+        $this->user = $user;
 
         return $this;
     }
