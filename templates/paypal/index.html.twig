@@ -1,7 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Paiement{% endblock %}
+{% block title %}Paypal{% endblock %}
 
 {% block body %}
+<main class="container mt-5">
+    <!-- Set up a container element for the button -->
+    <div id="paypal-button-container"></div>
 
+    <!-- Include the PayPal JavaScript SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=AdaknML8sOl-wATqvsh0zeS66RfGdkdavw-hU3fawoxevswDpq2zLWN_w7K9W_Y6wgts6QkFTGoWr3dI&currency=EUR"></script>
+
+    <script>
+        var total = document.getElementById(total);
+        // Render the PayPal button into #paypal-button-container
+        paypal.Buttons({
+              // Set up the transaction
+              createOrder: function(data, actions) {
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: '10'
+                        }
+                    }]
+                });
+            },
+
+            // Finalize the transaction
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    // Show a success message to the buyer
+                    alert('Transaction completed by ' + details.payer.name.given_name + '!');
+                });
+            }
+        }).render('#paypal-button-container');
+    </script>
+</main>  
 {% endblock %}

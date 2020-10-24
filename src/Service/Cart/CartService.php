@@ -61,4 +61,17 @@ class CartService
 
         return $total;
     }
+
+    public function getProducts() : array
+    {
+        $panier = $this->session->get('panier', []);
+        $panierWithData = [];
+        foreach($panier as $id => $quantity) {
+            $panierWithData[] = [
+                'product' => $this->productRepository->find($id)
+            ];
+        }
+
+        return $panierWithData;
+    }
 }
