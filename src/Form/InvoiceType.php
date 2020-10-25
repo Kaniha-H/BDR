@@ -43,10 +43,11 @@ class InvoiceType extends AbstractType
                 'label'=> "Client",
                 'label_attr' => ['class' => 'col-sm-3 col-form-label'
                ],
-
                 'class' => User::class,
                 'choice_label'=> function($user){
-                    $output = $user->getUserName()." ";
+                    // $output = $user->getUserName()." ";
+                    $output = $user->getFirstname()." ";
+                    $output.= $user->getLastname()." ";
                     return $output;
                 },
                 // 'choice_label' => 'username',

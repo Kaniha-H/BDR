@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Invoice;
 use App\Form\InvoiceType;
 use App\Repository\InvoiceRepository;
+use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -18,12 +19,16 @@ class InvoiceController extends AbstractController
     /**
      * @Route("s", name="index", methods={"HEAD","GET"})
      */
-    public function index(InvoiceRepository $invoiceRepository)
+    public function index(InvoiceRepository $invoiceRepository, UserRepository $userRepository)
     {
         $invoices = $invoiceRepository->findAll();
+        // $users = $userRepository->findAll();
+        // $ids = $invoiceRepository->getUser();
 
         return $this->render('invoice/index.html.twig', [
             'invoices' => $invoices,
+            // 'users' => $users,
+            // 'id' => $ids
         ]);
     }
 

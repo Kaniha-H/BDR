@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-{% set title = "Liste des facture - Facture 3000" %}
+{% set title = "Liste des factures" %}
 
 {% block title title %}
 
@@ -37,12 +37,14 @@
                 {% for invoice in invoices %}
                     <tr>
                         <td>{{ invoice.number }}</td>
-                        <td>{{ invoice.createAt | date("Y-m-d") }}</td>
-                        <td>{{ invoice.user.firstname }} {{ invoice.user.lastname }}</td>
+                        <td>{{ invoice.createAt | date("d-m-Y") }}</td>
+                        <td>invoice.user.email</td>
+                        <!-- <td>invoice.id</td> -->
                         <td>xxxx</td>
-                        <td><a href="{{ path('invoice:read', {uuid: invoice.id}) }}">info</a></td>
+                        <td><a href="{{ path('invoice:read', {id: invoice.id}) }}">info</a></td>
                     </tr>
                 {% endfor %}
+
                 </tbody>
             </table>
             {% endif %}
