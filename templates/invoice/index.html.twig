@@ -7,8 +7,8 @@
 <div class="container">
 
     <header class="page-header">
-        <h2 class="page-title">{{ title }}</h2>
-        <div class="page-actions">
+        <h2 class="page-title my-5">{{ title }}</h2>
+        <div class="page-actions mb-4">
             <a class="btn btn-primary btn-sm" href="{{ path('invoice:create') }}">Créer une facture</a>
         </div>
     </header>
@@ -23,7 +23,7 @@
 
             {% else %}
             
-            <table class="table table-striped">
+            <table class="table table-striped bg-light col-12">
                 <thead>
                     <tr>
                         <th>Numéro</th>
@@ -31,6 +31,8 @@
                         <th>Client</th>
                         <th>Montant</th>
                         <td>Actions</td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,7 +43,9 @@
                         <td>invoice.user.email</td>
                         <!-- <td>invoice.id</td> -->
                         <td>xxxx</td>
-                        <td><a href="{{ path('invoice:read', {id: invoice.id}) }}">info</a></td>
+                        <td><a href="{{ path('invoice:read', {id: invoice.id}) }}" class="btn btn-success">info</a></td>
+                        <td><a href="{{ path('invoice:update', {id: invoice.id}) }}" class="btn btn-warning">éditer</a></td>
+                        <td><a href="{{ path('invoice:delete', {id: invoice.id}) }}" class="btn btn-danger">supprimer</a></td>
                     </tr>
                 {% endfor %}
 

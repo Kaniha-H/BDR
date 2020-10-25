@@ -103,25 +103,14 @@ class InvoiceController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/delete", name=":delete", methods={"HEAD","GET","DELETE"})
-     * 
-     * Route("/game/{id}/delete", name="game:delete")
+     * @Route("/{id}/delete", name="delete", methods={"HEAD","GET","DELETE"})
      */
     public function delete(Invoice $invoice, Request $request)
     {
-        return $this->render('invoice/delete.html.twig', [
-            'invoice' => $invoice
-        ]);
+        $em = $this->getDoctrine()->getManager();
+        $em->remove($invoice);
+        $em->flush();
+
+        return $this->redirectToRoute("invoice:index");
     }
-
-    // /**
-    //  * @Route("/{id}/name", name=":name")
-    //  */
-    // public function productName(Invoice $invoice)
-    // {
-    //     return $this->render('invoice/name.html.twig', [
-    //         'invoice' => $invoice->getProducts()
-
-    //     ]);
-    // }
 }
